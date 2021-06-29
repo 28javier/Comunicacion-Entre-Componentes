@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <!-- componente -->
+    <app-count-empleado [todos]="obtenerTotalEmpleados()" [femeninos]="obtenerTotalFemenino()" [masculinos]=" obtenerTotalMasculino()" (countRadioButtonChange)="empleadoCount($event)"></app-count-empleado>
+    <!-- fin del componente -->
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Sexo</th>
+                        <th scope="col">Salario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let listaE of listEmpleado; let i = index">
+                        <tr *ngIf="radioButonSeleccionado === 'Todos' || radioButonSeleccionado === listaE.sexo ">
+                            <th scope="row">{{listaE.id}}</th>
+                            <td>{{listaE.nombre}}</td>
+                            <td>{{listaE.apellido}}</td>
+                            <td>{{listaE.sexo}}</td>
+                            <td>{{listaE.salario | currency}}</td>
+                        </tr>
+                    </ng-container>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
